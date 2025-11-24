@@ -1,10 +1,11 @@
-name: Docker-Pipeline
+
 
 trigger:
 - main
 
-pool:
+pool: 
   name: Docker-pool
+
 
 stages:
   - stage: dockr_build
