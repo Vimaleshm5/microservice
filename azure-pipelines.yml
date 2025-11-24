@@ -6,11 +6,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+  - stage: dockr_build
+    jobs:
+      - job: dockerbuild
+        steps:
+        - task: lambda3docker@0
+          inputs:
+            command: 'build'
+            imageBuild: 'todoui'
+            
